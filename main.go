@@ -4,22 +4,12 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"os"
-	"strconv"
 )
 
 // found in https://github.com/bediger4000/udp-echo-server/blob/master/server.go
 
 func main() {
-	portS, exists := os.LookupEnv("PORT")
-	var port int = 30001 // default
-	var err error
-	if exists {
-		port, err = strconv.Atoi(portS)
-		if err != nil {
-			log.Fatal("Cannot read ENV port")
-		}
-	}
+	const port = 3601 // default
 
 	addr := net.UDPAddr{Port: port, IP: net.ParseIP("0.0.0.0")}
 
